@@ -9,6 +9,7 @@ const Statistics = ({ good, neutral, bad }) => {
     average = (good - bad) / all;
     positive = (good * 100) / all;
   }
+
   return (
     <>
       <h2>Statistics</h2>
