@@ -6,24 +6,6 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min) + min); //The maximum is inclusive and the minimum is inclusive
 }
 
-function indexOfMax(arr) {
-  if (arr.length === 0) {
-    return -1;
-  }
-
-  var max = arr[0];
-  var maxIndex = 0;
-
-  for (var i = 1; i < arr.length; i++) {
-    if (arr[i] > max) {
-      maxIndex = i;
-      max = arr[i];
-    }
-  }
-
-  return maxIndex;
-}
-
 const App = () => {
   const anecdotes = [
     "If it hurts, do it more often",
@@ -37,6 +19,7 @@ const App = () => {
 
   const [selected, setSelected] = useState(0);
   const [votes, setVotes] = useState(new Array(anecdotes.length).fill(0));
+  const [maxi, setMaxi] = useState(0);
 
   const handleSelected = () => {
     const newSelected = getRandomInt(0, anecdotes.length);
@@ -46,6 +29,10 @@ const App = () => {
   const handleVote = () => {
     const copy = [...votes];
     copy[selected] += 1;
+
+    if (copy[selected] >= copy[maxi]) {
+      setMaxi(selected);
+    }
 
     setVotes(copy);
   };
@@ -58,8 +45,8 @@ const App = () => {
       <button onClick={handleSelected}>next anecdote</button>
 
       <h1>Anecdote with most votes</h1>
-      <p>{anecdotes[indexOfMax(votes)]}</p>
-      <p>has {votes[indexOfMax(votes)]} votes</p>
+      <p>{anecdotes[maxi]}</p>
+      <p>has {votes[maxi]} votes</p>
     </div>
   );
 };
