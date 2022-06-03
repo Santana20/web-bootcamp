@@ -44,7 +44,7 @@ const App = () => {
     filterName === ""
       ? persons
       : persons.filter((person) =>
-          person.name.toLowerCase().includes(filterName)
+          person.name.toLowerCase().includes(filterName.toLowerCase())
         );
 
   return (
