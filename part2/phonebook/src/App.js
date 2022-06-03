@@ -17,9 +17,9 @@ const PersonForm = ({ onSubmit, inputName, inputNumber }) => {
     <form onSubmit={onSubmit}>
       <div>
         name: <Input input={inputName} />
-        <div>
-          number: <Input input={inputNumber} />
-        </div>
+      </div>
+      <div>
+        number: <Input input={inputNumber} />
       </div>
       <div>
         <button type="submit">add</button>
